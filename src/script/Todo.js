@@ -51,6 +51,8 @@ class Todo extends React.Component{
         var index = todos.findIndex((todo) => {
             return todo.id==id;
         })
+        if(index==-1)
+            return;
         if(!todos[index].done)
             this.activetodos--;
         todos.splice(index, 1);
