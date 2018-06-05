@@ -3,6 +3,7 @@ import Title from './Title';
 import Input from './Input';
 import List from './List';
 import Panel from './Panel';
+import Message from './Message'
 
 class Todo extends React.Component{
     constructor(props){
@@ -81,8 +82,12 @@ class Todo extends React.Component{
         let todos = this.state.todos;  // make a separate copy of the array
         todos = todos.filter(todo => !todo.done);
         this.setState({todos: todos});
+        document.querySelector( ".message" ).style.display = "block";
+        setTimeout(this.hideMessage,2000) ;
     }
-
+    hideMessage(){
+        document.querySelector( ".message" ).style.display = "none" ;
+    }
     changeMode = (e) => {
         this.jmode.classList.remove('focus');
         e.target.classList.add('focus');
@@ -96,14 +101,26 @@ class Todo extends React.Component{
     }
 
     render(){
+        if(this.state.mode === 'active')
+            this.filteredTodos = this.state.todos.filter((todo) => {
+                return !todo.done;
+            });
+       else if(this.state.mode === 'all')
+            this.filteredTodos = this.state.todos;
+       else
+            this.filteredTodos = this.state.todos.filter((todo) => {
+                return todo.done;
+            });
+
         return (
             <div>
                 <Title className="todo__title" title="todos"/>
                 <div className={this.props.className}>
                     <Input className='todo__new' type="text" placeholder="What needs to be done?" OnEnter={this.addNewTodo}/>
-                    <List className="todo__list" lists={this.state.todos} mode={this.state.mode} onToggle={this.ToggleTodo} onDelete={this.deletedTodo} onEdit={this.makeEditable} onEnter={this.updateTodo}/>
+                    <List className="todo__list" lists={this.filteredTodos} mode={this.state.mode} onToggle={this.ToggleTodo} onDelete={this.deletedTodo} onEdit={this.makeEditable} onEnter={this.updateTodo}/>
                     <Panel className="todo__pannel" onModeChange={this.changeMode} activeTodos={this.activetodos} onClear={this.clearCompleted}/>
                 </div>
+                <Message message="Completed cleared"/>
             </div>
         );
     }

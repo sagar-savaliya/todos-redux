@@ -120,8 +120,15 @@ body {
 
 .todo__clearcompleted:hover{
   text-decoration: underline;
-  text-decoration-color: #ff8f71;
+  text-decoration-color: #ffa94c;
 }
+
+.todo__clearcompleted:active{
+  text-decoration: underline;
+  color: red;
+  text-decoration-color: #ff2433;
+}
+
 .focus{
   border: 1px solid black;
   border-radius: 10%;
@@ -129,5 +136,19 @@ body {
   transition: background-color 500ms;
 }
 
+.message{
+  position: fixed;
+  z-index: 2;
+  background-color: #485158;
+  color: white;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  border-radius:7px;
+  top: 80%;
+  left: 44%;
+  display: none;
+  transition: all 2s;
+}
 
 
