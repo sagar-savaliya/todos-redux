@@ -50,6 +50,7 @@ body {
   align-items: center;
   padding: 15px;
   border-bottom: inset;
+/*min-height: 20px;*/
 }
 .checkmark {
   margin-left: 15px;
