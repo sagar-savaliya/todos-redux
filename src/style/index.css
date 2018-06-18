@@ -1,7 +1,7 @@
 
 
 body {
-  background: url("images/html-background-image-HD1.jpg");
+  background: url("../images/html-background-image-HD1.jpg");
   background-size: 100%;
 }
 .todo {
@@ -50,7 +50,6 @@ body {
   align-items: center;
   padding: 15px;
   border-bottom: inset;
-/*min-height: 20px;*/
 }
 .checkmark {
   margin-left: 15px;
@@ -100,7 +99,7 @@ body {
   height: 30px;
 }
 
-.todo__left,.todo__all,.todo__active,.todo__completed,.todo__clearcompleted{
+.todo__left,.todo__modebutton,.todo__clearcompleted{
   padding: 3px;
   font-size: 12px;
 }
@@ -109,11 +108,15 @@ body {
   flex-basis: 60px;
 }
 
-.todo__all,.todo__active,.todo__completed,.todo__clearcompleted{
+.todo__clearcompleted{
+  flex-basis: 100px;
+}
+
+.todo__modebutton,.todo__clearcompleted{
   cursor: pointer;
 }
 
-.todo__all, .todo__active,.todo__completed{
+.todo__modebutton{
   transition: background-color 700ms;
 }
 
